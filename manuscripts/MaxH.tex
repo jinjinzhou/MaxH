@@ -1,0 +1,597 @@
+% !TEX encoding = MacOSRoman
+\documentclass[11pt]{article}
+\usepackage{amsbsy, amstext, amssymb, amsthm, amsmath,bm,wasysym}
+\usepackage{algorithmic,graphicx,booktabs,hyperref,multirow,rotating}
+%\geometry{verbose,letterpaper,tmargin=2.5cm,bmargin=2.5cm,lmargin=2.5cm,rmargin=2.5cm}
+\usepackage{setspace}
+\usepackage{lscape}
+\usepackage{epsfig}
+ \usepackage[authoryear, round, sort]{natbib}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage{tabulary}
+\usepackage{pbox}
+
+
+\usepackage{lineno}
+\linenumbers
+
+\usepackage[margin=1in]{geometry}
+%\usepackage[lined,boxed,linesnumbered]{algorithm2e}
+\usepackage{array,stmaryrd}
+\usepackage{xr}
+\externaldocument[supp-]{MaxH-Supp}
+
+
+
+\def\qed{\hfill \rule{4pt}{7pt}}
+\def\E{\mathop{\rm E\,}\nolimits}
+\def\Var{\mathop{\rm Var}\nolimits}
+\def\SE{\mathop{\rm SE}\nolimits}
+\def\Cov{\mathop{\rm Cov}\nolimits}
+\def\Pen{\mathop{\rm Pen}\nolimits}
+\def\Prior{\mathop{\rm Prior}\nolimits}
+\def\Tran{\mathop{\rm Tran}\nolimits}
+\def\midd{\mathop{\,|\,}\nolimits}
+\def\GOF{\mathop{\rm GOF}\nolimits}
+\def\Pr{\mathop{\rm P}\nolimits}
+\def\tr{\mathop{\rm tr}\nolimits}
+\def\diag{\mathop{\rm diag}\nolimits}
+
+\def\logli{\mathop{\mathcal ll }\nolimits}
+
+\def\qed{\hfill \rule{4pt}{7pt}}
+\def\E{\mathop{\rm E\,}\nolimits}
+\def\Norm{\mathcal{N}}
+\def\Var{\mathop{\rm Var}\nolimits}
+\def\Cov{\mathop{\rm Cov}\nolimits}
+\def\Pen{\mathop{\rm Pen}\nolimits}
+\def\Prior{\mathop{\rm Prior}\nolimits}
+\def\Tran{\mathop{\rm Tran}\nolimits}
+\def\midd{\mathop{\,|\,}\nolimits}
+\def\GOF{\mathop{\rm GOF}\nolimits}
+\def\tr{\mathop{\rm tr}\nolimits}
+\def\H{\mathop{\textbf{\textrm H\,}}\nolimits}
+\def\I{\mathop{\textbf{\textrm I\,}}\nolimits}
+
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\beaa}{\begin{eqnarray*}}
+\newcommand{\eeaa}{\end{eqnarray*}}
+
+
+%\usepackage[babel]{csquotes}
+%\usepackage{biblatex}
+\newcommand{\rank}{\mathrm{rank}}
+\newcommand{\real}[1]{\mathrm{I \! R} \mathit{^{#1}}}
+\newcommand{\trans}{^{\mbox{\tiny {\sf T}}}}
+\newcommand{\spn}{\mbox{span}}
+\newcommand{\spc}{{\mathcal S}}
+\newcommand{\cs}{\spc_{Y|\Xbf}}
+\newcommand{\vect}{\mathrm{vec}}
+
+\newcommand{\Abf}{{\bm A}}
+\newcommand{\Bbf}{{\bm B}}
+\newcommand{\Cbf}{{\bm C}}
+\newcommand{\Dbf}{{\bm D}}
+\newcommand{\Ebf}{{\bm E}}
+\newcommand{\Fbf}{{\bm F}}
+\newcommand{\Gbf}{{\bm G}}
+\newcommand{\Hbf}{{\bm H}}
+\newcommand{\Ibf}{{\bm I}}
+\newcommand{\Jbf}{{\bm J}}
+\newcommand{\Lbf}{{\bm L}}
+\newcommand{\Kbf}{{\bm K}}
+\newcommand{\Mbf}{{\bm M}}
+\newcommand{\Obf}{{\bm O}}
+\newcommand{\Pbf}{{\bm P}}
+\newcommand{\Qbf}{{\bm Q}}
+\newcommand{\Rbf}{{\bm R}}
+\newcommand{\Sbf}{{\bm S}}
+\newcommand{\Tbf}{{\bm T}}
+\newcommand{\Ubf}{{\bm U}}
+\newcommand{\Vbf}{{\bm V}}
+\newcommand{\Wbf}{{\bm W}}
+\newcommand{\Xbf}{{\bm X}}
+\newcommand{\Ybf}{{\bm Y}}
+\newcommand{\Zbf}{{\bm Z}}
+
+\newcommand{\abf}{{\bm a}}
+\newcommand{\bbf}{{\bm b}}
+\newcommand{\ebf}{{\bm e}}
+\newcommand{\fbf}{{\bm f}}
+\newcommand{\gbf}{{\bm g}}
+\newcommand{\lbf}{{\bm l}}
+\newcommand{\ubf}{{\bm u}}
+\newcommand{\vbf}{{\bm v}}
+\newcommand{\wbf}{{\bm w}}
+\newcommand{\xbf}{{\bm x}}
+\newcommand{\ybf}{{\bm y}}
+\newcommand{\zbf}{{\bm z}}
+
+\newcommand{\zerobf}{{\mathbf 0}}
+\newcommand{\onebf}{{\mathbf 1}}
+
+\newcommand{\greekbold}[1]{\mbox{\boldmath $#1$}}
+\newcommand{\alphabf}{\greekbold{\alpha}}
+\newcommand{\betabf}{\greekbold{\beta}}
+\newcommand{\deltabf}{\greekbold{\delta}}
+\newcommand{\etabf}{\greekbold{\eta}}
+\newcommand{\epsilonbf}{\greekbold{\epsilon}}
+\newcommand{\gammabf}{\greekbold{\gamma}}
+\newcommand{\mubf}{\greekbold{\mu}}
+\newcommand{\nubf}{\greekbold{\nu}}
+\newcommand{\pibf}{\greekbold{\pi}}
+\newcommand{\phibf}{\greekbold{\phi}}
+\newcommand{\psibf}{\greekbold{\psi}}
+\newcommand{\sigmabf}{\greekbold{\sigma}}
+\newcommand{\taubf}{\greekbold{\tau}}
+\newcommand{\zetabf}{\greekbold{\zeta}}
+\newcommand{\thetabf}{\greekbold{\theta}}
+\newcommand{\lambdabf}{\greekbold{\lambda}}
+\newcommand{\Gammabf}{\greekbold{\Gamma}}
+\newcommand{\Phibf}{\greekbold{\Phi}}
+\newcommand{\Thetabf}{\greekbold{\Theta}}
+\newcommand{\Sigmabf}{\greekbold{\Sigma}}
+\newcommand{\Lambdabf}{\greekbold{\Lambda}}
+\newcommand{\Omegabf}{\greekbold{\Omega}}
+\newcommand{\Pibf}{\greekbold{\Pi}}
+
+\newcommand{\Xb}{\mathbb{X}}
+\newcommand{\Xf}{\mathfrak{X}}
+
+
+
+
+
+\title{Integrating Multiple Correlated Phenotypes for Genetic Association Analysis by Maximizing Heritability}
+
+\author{\\[1.5cm]
+Jin J.\ Zhou$^{1,2}$, Michael H. Cho$^{3,4,5}$, Christoph Lange$^{2}$, Sharon Lutz$^6$, \\Edwin K. Silverman$^{3,4,5}$, and Nan M. Laird$^{2}$}
+
+\usepackage[english]{babel}
+\makeatother
+\begin{document}
+\baselineskip=20pt
+
+\maketitle
+
+\date{}
+
+\begin{center}
+$^{1}$ Division of Epidemiology and Biostatistics, College of Public Health, University of Arizona, Tucson, AZ 85724
+
+$^{2}$Department of Biostatistics, Harvard University
+
+$^{3}$Channing Division of Network Medicine, Department of Medicine, Brigham and WomenÕs Hospital
+
+$^{4}$Harvard Medical School
+
+$^{5}$Division of Pulmonary and Critical Care Medicine, Department of Medicine, Brigham and WomenÕs Hospital  
+
+Boston, MA 02115 
+
+$^{6}$Department of Biostatistics and Informatics, University of Colorado, Anschutz Medical Campus, Aurora, CO 80045
+
+\end{center}
+
+\vspace{1cm}
+\noindent Running Title: 
+
+Integrating Correlated Phenotypes
+
+\noindent Corresponding author:
+
+Jin Zhou
+
+Division of Epidemiology and Biostatistics, College of Public Health
+
+University of Arizona, Tucson, AZ 85724
+
+Phone: (520) 626-1393
+
+Email: jzhou@email.arizona.edu
+
+\newpage
+\pagestyle{empty}
+
+\pagestyle{plain}
+
+\setcounter{page}{1}
+
+\begin{abstract}
+\doublespacing
+{\normalsize 
+Many correlated disease variables are analyzed jointly in genetic studies in the hope of increasing power to detect causal genetic variants. One approach involves assessing the relationship between each phenotype and each single nucleotide polymorphism (SNP) individually and using a Bonferroni correction for the effective number of tests conducted. Alternatively, one can apply a multivariate regression or a dimension reduction technique, such as principal component analysis (PCA), and test for the association with the principal components (PC) of the phenotypes rather than the individual phenotypes.  Inspired by the previous approaches of combining phenotypes to maximize heritability at individual SNPs, in this paper, we propose to construct a maximally heritable phenotype (MaxH) by taking advantage of the estimated total heritability and co-heritability. The heritability and co-heritability only need to be estimated once, therefore our method is applicable to genome-wide scans.  MaxH phenotype is a linear combination of the individual phenotypes with increased heritability and power over the phenotypes being combined. Simulations show that the heritability and power achieved agree well with the theory for large samples and two phenotypes. We compare our approach with commonly used methods and assess both the heritability and the power of the MaxH phenotype. Moreover we provide suggestions for how to choose the phenotypes for combination. An application of our approach to a COPD genome-wide association study shows the practical relevance.
+}
+\end{abstract}
+
+\vspace{1cm}
+\subsection*{Keywords:}
+Principal component of heritability, Co-heritability,  GWAS, Multivariate analysis
+
+\clearpage
+\section{Introduction}
+
+Complex diseases are often assessed using multiple correlated phenotypes. These phenotypes, sometimes called ``endophenotypes", are heritable predicators of disease status. A standard approach to analyze multiple phenotypes is to consider each phenotype separately, but many suggestions have been made for combining the phenotypes in some way with the goal of increasing power, or elucidating disease mechanisms. A multivariate regression strategy is straightforward, but  computationally intensive and the power of the approach compared to other approaches depends upon unknown effects~\citep{Korte:2012kx,Schifano:2013aa}. Other strategies use linear combinations of the phenotypes for analysis. Principal component approach (PCA) generates linear combinations through maximizing phenotypic variances~\citep{Karasik:2004aa,Avery:2011aa}. Multiphen~\citep{OReilly:2012aa} takes the single SNP as the outcome, multiple phenotypes as the predictors and tests the association between the linear combination of phenotypes and single SNP by ordinal regression. Here we propose a linear combination of the phenotypes that maximizes the total heritability, estimated from a sample of unrelated individuals~\citep{Yang:2010zr}; as such our approach is suitable for application to a genome-wide analysis because the linear combination is selected only once, and can be applied to all SNPs on the GWAS chip. The increased heritability of the phenotype translates into improved power for association testing. In contrast, the heritability and the consequent power of the first principal component can be much lower, depending on the genetic parameters~\citep{Aschard:2014aa}. 
+
+In the linkage era, \cite{Ott:1999fk} introduced the approach of incorporating phenotypes into a linear combination with maximized heritability and increased power of locating genes in the context of  pedigrees and the presence of pleiotropy. It also has been integrated into a family-based association test for repeated measure analysis by \cite{Lange:2004uq}. \cite{Klei:2008fk} first applied it to association studies with independent samples.  Their approach, like Lange's~\citep{Lange:2004uq} focused on the 
+notion of optimizing the contribution of a single genetic variant to phenotypic variance which is a fraction of the total heritability of the individual trait. Both Lange's~\citep{Lange:2004uq} and Klei's~\citep{Klei:2008fk} methods estimated the appropriate coefficients for each genetic variant separately. For family trios, Lange~\textit{et. al.}~\citep{Lange:2004uq} recommended using the non-informative portion of the family data to estimate this quantity as it is independent of the remaining sample. In population studies, \cite{Klei:2008fk} explored a method of sample splitting and cross validation to determine these coefficients from a training set and then test for association using the remainder of the sample. The method works well for individual SNPs, but is not practical for a genome-wide association study (GWAS). Our method differs from \cite{Klei:2008fk} and \cite{Lange:2004uq} by globally estimating the total heritability of each single phenotype and estimating genetic covariances of pairs of phenotypes, which only need to be performed once. The combined phenotype (MaxH) is used to test all SNPs. 
+
+We compare our method with (1) single phenotype tests adjusting for multiple comparison; (2) univariate test using the first PC of PCA~\citep{Karasik:2004aa,Avery:2011aa} method; (3) Multiphen~\citep{OReilly:2012aa}, (4) multivariate regression using Mendel~\citep{Lange:2013fk}. Method (2) and (3) use the linear combination of the phenotypes and tests the association through linear regression. Mendel builds upon multivariate regression. It is a likelihood based method using both score and likelihood ratio tests (LRT) for association testing. Recent work from \cite{Aschard:2014aa} shows that testing only the top PCs often has low power, whereas combining signals across all PCs can have greater power. We therefore compared MaxH with multivariate regression using multiple PC phenotypes. Through simulations and real examples, we find our approach proved to have higher power for testing SNPs explaining only a small fraction of the total heritability compared to other univariate association methods.  
+
+In the following sections, we first present the method of combining multiple phenotypes through maximizing total heritability and show how power can be approximated analytically for univariate regression given the phenotypic and genotypic variance  matrix. In the results section, we provide simple examples illustrate how the heritability changes as a function of the number of phenotypes combined, as well as the impact of missing data. We also provide simulations to show the impact of estimating heritability on power. We use a data example and simulations to compare MaxH with the other approach described above. 
+
+\section{Material and Method}
+\subsection{Integration of Phenotypes}\label{sec:method_integration} Let $m$ be the unknown number of independent causal loci, indexed by $k$, $n$ be the number of individuals, indexed by $i$, and $T$ be the number of phenotypes, indexed by $t$. In the absence of any covariates or major gene effects, each phenotype is assumed to have the standard polygenic  model \citep{falconer1981introduction}, given by 
+\bea
+y_{ti} &=&\mu_{t}+\sum_{k=1}^m a_{tk}x_{ki}+\epsilon_{ti}\nonumber\\
+           &=&\mu_{t}+g_{ti}+\epsilon_{ti},\label{linear}
+\eea
+where $y_{ti}$ is the $t$th phenotypic value for the $i$th individual; $\mu_{t}$ is the mean of the phenotype; $x_{ki}$ is the standardized minor allele count at locus $k$ of individual $i$, $a_{tk}$ is the additive allelic effect of locus $k$ on phenotype $t$, $g_{ti}=\sum_{k=1}^m a_{tk}x_{ki}$ is the total additive genetic effect of individual $i$'s phenotype $t$, and the $\epsilon_{ti}$ are the residual effects.  We treat $a_{tk}$ as random variables independent of the $x_{ki}$s and of each other, with zero means and common variances and covariances, so that 
+\beaa
+\E(g_{ti})&=&0\\
+\Var(g_{ti})&=&\sigma_{at}^2 \\
+\Cov(g_{ti}, g_{t'i})&=&\sigma_{tt'}\\
+&=&\sigma_{at}\sigma_{at'}\rho_{tt'},
+\eeaa
+where $\sigma_{at}^2=\Var(\sum_{k=1}^m a_{tk}x_{ki})$ is the total additive genetic variance and $\sigma_{tt'}$ is the covariance between the additive effects for phenotypes $t$ and $t'$, average over the $k$ causal loci. This $\sigma_{tt'}$ can be viewed as the average pleiotropy. Finally, assuming the genetic and environmental effects are independent we have 
+\begin{eqnarray}
+\Vbf_p&=&\Var(\ybf_i)=\Var(\gbf_i+\epsilonbf_i)=\Vbf_g+\Vbf_e,
+\end{eqnarray}
+where $\textbf{y}_i$, $\textbf{g}_i$, and $\bm{\epsilon}_i$ are the length $T$ vectors of phenotypes, genetic and environment components for the $i$th individual, and
+\bea
+\Vbf_g &=&\Var(g_{ti})= \left(
+\begin{array}{ccc}
+\sigma_{a_1}^2  &\ldots& \sigma_{a_{1T}}\\
+\ldots & \ldots & \ldots \\
+\sigma_{a_{T1}}  &\ldots &\sigma_{a_T}^2 
+\end{array}
+\right)\nonumber
+\\
+\Vbf_e &=& \Var(\epsilon_{ti})=\left(
+\begin{array}{ccc}
+\sigma_{e_1}^2  & \ldots& \sigma_{e_{1T}}   \\
+\ldots & \ldots & \ldots \\
+\sigma_{e_{T1}} &\ldots &  \sigma_{e_T}^2 
+\end{array}
+\right).\label{var-cov}
+\eea
+Note that this model also implies
+\beaa
+\Cov(y_{ti},y_{ti'})&=&G_{ii'} \sigma^2_{at} \\
+\Cov(y_{ti},y_{t'i'})&=&G_{ii'} \sigma_{att'}
+\eeaa
+where the $G_{ii'}$s are the genetic relationship coefficients for individuals $i$ and $i'$. Elements of the $n\times n$ genetic relationship matrix, $\Gbf$, can be determined from pedigree information \citep{LangeStatGen} or estimated from GWAS data \citep{Yang:2010zr}. This multivariate polygenic model is discussed in~\cite{Korte:2012kx} and \cite{Lee:2012aa}. 
+
+Narrow sense heritability of the $t$th phenotype is defined as the proportion of the additive genetic variance among the total phenotypic variance, i.e.,
+\beaa
+h_t^2&=&\frac{\sigma_{a_t}^2}{\sigma_{a_t}^2+\sigma_{e_t}^2}.
+\eeaa
+To integrate multiple phenotypes,  our goal is to find a vector of  coefficients $\lbf$ such that $\Ybf \lbf$  has the maximum heritability among all such linear combinations of the phenotypes, where $\Ybf=(\ybf_1,\ldots,\ybf_T)$ is a $n\times T$ matrix of the collection of all $T$ phenotypes. The heritability of any linear combination of phenotypes $\Ybf\lbf$,  can be expressed as the Rayleigh quotient~\citep{horn85},
+\bea
+h_l^2&=&\frac{l'\Vbf_gl}{l'\Vbf_pl}\label{RQ}.
+\eea
+Henceforth we denote $\Ybf\lbf$ with $\lbf$ chosen to maximize heritability as the set of MaxH phenotypes. The same optimization problem (\ref{RQ}) has also been encountered in Fisher's linear discriminant analysis (LDA) for classification \citep{Witten:2011fk}. Detailed explanation for optimizing equation~(\ref{RQ}) can be found in Supplementary Material and the notes~\citep{welling2005fisher}. Briefly, one needs to eigendecompose the matrix $\Vbf_g^{\frac{1}{2}}\Vbf_p^{-1}\Vbf_g^{\frac{1}{2}}$ and the desired optimization solution is to find the biggest eigenvalue, i.e., maximized heritability $h_l^2$ and the corresponding eigenvector $\wbf$. 
+
+The above calculation assumes the parameters in $\Vbf_p$ and $\Vbf_g$ are known; in reality we need to estimate them. Historically $\Vbf_p$ and $\Vbf_g$ were estimated using data on pedigrees with known genetic relationships, i.e., $\Gbf$. More recent work  shows how to approximate $\Gbf$ and estimate $\Vbf_p$ and $\Vbf_g$ from GWAS data on population based samples~\citep{Yang:2010zr}. With $\Gbf$ treated as known, $(\Vbf_g, \Vbf_p)$ can be estimated using Maximum Likelihood (ML), Restricted ML (REML) or Method of Moments (MOM) approaches. When the sample size is large, the maximization is not trivial and the computation is costly.  We used ML for the application example, and recommend that ML or REML be used in practice. For efficiency of computation, we used the much simpler MOM approach to estimate $\Vbf_g$ and $\Vbf_p$ in the simulations~\citep{LangeStatGen}. We summarize the steps needed to compute the MaxH phenotype in the Supplementary Material.
+
+\subsection{Association Testing and Power Approximation}\label{sec:method_testing} 
+Thus far, we have focused on maximizing heritability in order to integrate multiple phenotypes. Now we consider testing and power for individual SNPs using MaxH phenotype.  To test the hypothesis of no association for a single variant, we include a major gene effect and use the ``mixed model" \citep{Korte:2012kx}
+\bea
+y_{ti}&=&\mu_{t}+b_tx_{0i}+g_{ti}+\epsilon_{ti}\label{mixed1}
+\eea
+where $x_{0i}$ is the standardized additive coding for the SNP we wish to test and $\bbf=(b_1,\ldots,b_T)$ is the vector of genetic effects for the $T$ phenotypes. Letting $\Ybf_{l}=(y_{li})=\Ybf \lbf$ denote the $n$-vector of MaxH phenotypes, for each element, we have 
+\beaa
+y_{li}&=&\lbf'\bm{y_i}=\mu_l+b_lx_{0i}+g_{li}+\epsilon_{li}
+\eeaa
+where $\ybf_i=(y_{1i},y_{2i},\ldots,y_{ti})'$ is individual $i$'s $T$ phenotypic measurments, $b_l=\lbf'\bm{b}$, $\mu_l=\lbf'(\mu_1,\ldots,\mu_T)$, $g_{li}=\lbf'\bm{g_i}$,  and $\epsilon_{li}=\lbf'\epsilonbf_i$. Hence
+\beaa
+\E(y_{li})&=&\mu_l+b_l\\
+\Var(y_{li})&=&\lbf'\Vbf_p\lbf.
+\eeaa
+To test $\mbox{H}_0:\, b_l=\lbf'\bm{b}=0$, a Wald test is given by
+\bea
+W&=&\frac{\hat{b}_l}{\SE(\hat{b}_l)}\label{eq:waldstat}
+\eea
+where $\hat{b}_l$ is the ordinary least squares (OLS) estimator of $b_l$ and $\SE$ is its standard error under the regression model  \citep{Klei:2008fk}.  In the calculation of $\SE(\hat{b})$ we have neglected the correlation of subjects' phenotypes generated by the polygenic background, since in a population based sample, the genetic relationships are small in practice. But the correlations are considered when generating MaxH phenotypes. Simulation example shows that the type I error rate is protected.
+
+The power of any test to reject $\mbox{H}_0:\, b_l=\lbf'\bm{b}=0$ depends not only on the test statistic, but also on how $\bm{b}=(b_1,\ldots,b_T)$ is chosen.   The vector $\bm{b}$ can be chosen arbitrarily, but if the polygenic model is correct, in a GWAS setting with polygenic effects, it is natural to consider testing SNPs whose genetic effects  are consistent with the polygenic model, i.e., $\bm{b}\sim c\mathcal{N}(0,\Vbf_g)$, where $c$ is a scale parameter chosen to determine the heritability of the major gene effect. When including a major gene effect, the overall genetic variance of a linear combination becomes $b_l^2+\lbf'\Var(g_i)\lbf$. In order to maintain a fixed overall heritability (Equation (\ref{RQ})), we choose the major gene effect to satisfy, $
+b_l^2=c^2\lbf'\Vbf_g\lbf$,
+where $\lbf'\Vbf_g\lbf$ is again the total genetic variance including the major gene effect; this implies that $b_l$ explains a fraction $c^2$ of the total heritability. 
+
+The Wald test statistic $W^2$ in equation~(\ref{eq:waldstat}) follows a chi-square distribution with 1 degree of freedom, i.e., $\chi^2(\delta,1)$ with non-centrality parameter (NCP)
+\bea
+\delta^2  & =  & n\frac{c^2h_l^2}{1-c^2h_l^2}. \label{NCPt}
+\eea
+As heritability $h_l^2$ increases, the NCP and the power of the test increases, as does the asymptotic power. Power gain is heavily dependent on the gain of heritability. For the MaxH phenotype, the structure of the genotypic and phenotypic variance-covariance matrix and the number of phenotypes combined determines the heritability. In practice $\Vbf_p$ and $\Vbf_g$ must be estimated, and sampling error may decrease power if too many phenotypes are added. This is considered later, as well as when $\bm{b}$ comes from arbitrary distributions. 
+
+\section{Results}\label{sec:results}
+\subsection{Combining Phenotypes with $V_g$ and $V_p$ known}\label{sec:2pheno}
+First we consider combining the simple case of  two phenotypes with equal heritabilities, which are standardized with mean zero and variance one.  The genotypic and phenotypic variance-covariance matrices take the form,
+\beaa
+\Vbf_g=h^2\left(
+\begin{array}{cc}
+1  & r_g  \\
+r_g  & 1
+\end{array}
+\right) \quad \Vbf_p=\left(
+\begin{array}{cc}
+ 1 & r_p  \\
+r_p &1
+\end{array}
+\right)
+\eeaa
+where $r_g$ and $r_p$ are the genotypic and phenotypic correlation coefficients. Note that the phenotypic variance components are partitioned into genetic and environmental components, i.e., $\Vbf_p=\Vbf_g+\Vbf_e$, 
+thus $r_p=r_gh^2+r_e(1-h^2)$, where $r_e$ is environmental correlation coefficient. 
+Since $-1\leq r_e\leq 1$, it follows that the genotypic and phenotypic correlation coefficients have the constraints,
+\bea
+r_p\geq h^2-1+h^2r_g \quad\mbox{and}\quad
+r_p\leq h^2r_g+1-h^2.\label{maxh_constrait}
+\eea
+To maximize equation~(\ref{RQ}), the eigensystem equation~S(\ref{supp-eigen_sys}) in the Supplementary Material has eigenvectors, $(1,1)$ and $(1,-1)$, with eigenvalues
+$\frac{1+r_g }{1+r_p}h^2$ and $\frac{1-r_g}{1-r_p}h^2$. MaxH is obtained by picking the largest eigenvalue and corresponding eigenvector, subject to the constraint in~(\ref{maxh_constrait}), which also guarantees that the maximized heritability $h_l^2$ is bounded in $(0,1)$. 
+
+In this simple example where the heritability of two phenotypes are the same, the eigenvectors of the PCA approach are the same as the MaxH approach and the combined phenotypes are $\Ybf_1+\Ybf_2$ and $\Ybf_1-\Ybf_2$, but with different eigenvalues. The eigenvalues of the two PCs are $1\pm r_p$. When $r_g > r_p>0$, both MaxH and the first PC phenotypes are $\Ybf_1+\Ybf_2$.  However, when $r_p > r_g >0$, MaxH takes the combined phenotype which maximizes the heritability, i.e., $\Ybf_1-\Ybf_2$, while PCA takes the combined phenotype which maximizes the phenotypic variance, i.e., $\Ybf_1+\Ybf_2$. The selection of the maximal PC depends only on the sign of $r_p$. Thus the first PC  from PCA approach is always $\Ybf_1+\Ybf_2$ for $r_p>0$, but it is $\Ybf_1-\Ybf_2$  from MaxH approach when $r_p>r_g>0$. \cite{Aschard:2014aa} obtained a similar result using a slightly different model. For $T=2$, their model is equivalent to ours with the major gene $x_0$, except that the polygenic component $g_i$ is omitted and the residual variance covariance matrix has positive covariance $\nu$. The single major gene effect explains all of the heritability, and as a result $r_g=+1$ if $b_1$ and $b_2$ have the same sign or $r_g=-1$ otherwise. We consider a range of possible $r_g$ indicating a range of pleiotropy, based on which, we integrate phenotypes that maximize heritability.
+
+The increase of maximized heritability represents an increase in power. Figure~\ref{fig:power_corr} shows the maximized heritability as a function of $r_p$ and $r_g$. To develop intuition for how the MaxH and its heritability behaves, we consider the two extremes of pleiotropy.   When $r_g$  equals zero, i.e., there is no correlation between the coefficients of the genetic effects at the causal loci, and no evidence for average pleiotropy.  In this case, the phenotypic correlation is proportional to the residual correlation.  If $r_p>0$ the maximized heritability is $h^2/(1-r_p)$ and the MaxH phenotype is $\Ybf_1-\Ybf_2$.  Conversely, the first PC takes $\Ybf_1+\Ybf_2$.  Intuitively we see that the first PC maximizes the phenotypic (residual) covariance of the linear combination, while MaxH minimizes the residual effects.  A more specific example is,  when $r_g=0$, genetic component of the first phenotype is positive (non-zero), genetic component of the second phenotype is zero, and environmental correlation is positive (i.e. $r_p > 0$), MaxH (the difference of the two single phenotypes) will not enhance the genetic signal, rather reduce the residual variances.  In the absence of any information about genetic effects at a particular SNP, the phenotype with the smallest residual variance will be the best phenotype.  So MaxH will do better than PC. Now consider the other extreme where $|r_g|$ approaches $1$, i.e., the genetic effects for one phenotype predict perfectly the genetic effects for the second.  In this case, MaxH chooses the linear combination which maximizes the variance of the combined genetic effects.  The first PC continues to maximize the total phenotypic variance, and agrees with the MaxH choice when $|r_g|$ approaches $1$, because most of the phenotypic covariance is in the genetic, not the residual component. Note that when $r_p=r_g$,  either linear combination gives the same heritability as a single phenotype, and is also equivalent to PC.   When $r_p$ and $r_g$ have the same magnitude, but different signs, we can expect MaxH to do much better than the case when $r_p=r_g$.
+
+When combining more than two phenotypes, we extend the above design where pairwise correlations are the same, both phenotypic and genotypic, but heritabilities differ, i.e.,
+\beaa
+\Vbf_g\,=\,h^2 \left(
+\begin{array}{cccc}
+1 & kr_g &  \ldots & k^tr_g\\
+kr_g & k^2 &  \ldots & k^{t+1}r_g\\
+\ldots& \ldots&  \ldots & \ldots\\
+ k^{t+1}r_g &  \ldots & k^{2(t-1)} & k^{2t-1}r_g\\
+ k^t r_g &  \ldots &k^{2t-1} r_g & k^{2t}
+\end{array}
+\right) ,\quad
+\Vbf_p\,=\,\left(
+\begin{array}{cccc}
+1 & r_p &  \ldots & r_p\\
+r_p & 1 &  \ldots & r_p\\
+\ldots& \ldots&  \ldots & \ldots\\
+ r_p &  \ldots & 1 & r_p\\
+ r_p &  \ldots & r_p & 1
+\end{array}
+\right),
+\eeaa
+where $0<k\leq1$. For simplicity, we consider the situation when genetic and phenotypic correlations are both positive. In Figure~\ref{fig:power_m}, we show the maximized heritability as a function of the number of phenotypes combined while varying the value of $r_g$, $r_p$, and $k$. For all four cases, we set $h^2=0.4$. In Figure~\ref{fig:power_m}a and Figure~\ref{fig:power_m}b we set $k=1$, i.e., all combined phenotypes have the same heritability as $40\%$. When $r_g>r_p=0.4$ (Figure~\ref{fig:power_m}a), both approaches behave the same and the heritability increases as the number of phenotypes combined increases. In Figure~\ref{fig:power_m}c and Figure~\ref{fig:power_m}d we vary $k\,(0<k<1)$ so that phenotypes with lower heritabilities are added in.  Both figures (Figure~\ref{fig:power_m}c and Figure~\ref{fig:power_m}d) show PC loses heritability when adding phenotypes with lower heritabilities. This pattern exists even when heritabilities of phenotypes combined are fixed (Figure~\ref{fig:power_m}b). When  $r_g<r_p$, adding more phenotypes with lower heritabilities can increase the heritability of MaxH more dramatically than combing phenotypes when $r_g>r_p$, and combining more than two phenotypes does not provide a noticeable advantage for MaxH.
+ 
+
+\subsection{Testing a Single Locus in the Presence of Polygenic Variance}\label{sec:TestSingleSNP}
+Here we estimate power for three settings when combining two phenotypes with the same heritability ($h^2=0.4$). First we assume $\Vbf_g$ and $\Vbf_p$ are known for the purpose of calculating the MaxH phenotype, then we relax that assumption.  The test statistic of association and its standard error are calculated as in Section~\ref{sec:method_testing}. We consider three cases, a) $r_g>r_p$ (i.e., $r_g=0.9, \,\, r_p=0.4$); b) $r_g<r_p$ (i.e., $r_g=0.7, \,\, r_p=0.8$); and c) $r_g<r_p$ (i.e., $r_g=0.1, \,\, r_p=0.5$). We simulate phenotypes based on polygenic model (\ref{linear}) and (\ref{var-cov}). Genotypes are taken from genome-wide SNP data of COPDGene cohort of Non-Hispanic White (NHW) population.  Only SNPs ($51,428$ SNPs in total) from Chromosome $1$ were used for simplicity. 
+
+Our purpose is to show that power increase is determined by the increase of the maximized heritability (Equation~(\ref{NCPt}) and Figure~\ref{fig:power_corr}), and that the magnitude of the heritability increase is a surrogate of power increase. Phenotypes were simulated based on the linear model (\ref{linear}). One hundred SNPs  on Chromosome $1$ were randomly chosen as the causal SNPs for polygenic background. Five hundred replicates, each with $3000$ individuals and $T=2$ were simulated. Our approach was then compared to the single trait association analysis and the PC approach.  We consider testing only one of the $100$ causal SNPs with effects chosen as described in Section~\ref{sec:method_testing} with $c=2\%$. A different causal SNP is selected for each of the $500$ replicates. Thus we compute average power for a SNP explaining $2\%$ of the heritability.  After generating the single phenotypes, MaxH phenotype and the first PC, we assess empirical type I error rate through testing all the SNPs on chromosome 2 from COPDGene NHW population which has no causal SNPs. The estimated type I error rate is well maintained (0.048) at the significant level of $0.05$.
+
+The results are shown in Table \ref{table:em_power}. The heritability of each phenotype is $0.4$, and the maximized heritabilities predicted from our theory are given in lower panel of Table~\ref{table:em_power}. As predicted from our previous results in the Section~\ref{sec:2pheno}, MaxH and the first PC give nearly identical results when $r_g$ is large because they select identical linear combinations.  Even a modest reduction of $r_g$ to $0.7$ with an increase of $r_p$ to $0.8$ shows substantial impact on the relative power of MaxH and PC, with MaxH doing better.  For the third case, i.e., lower pleiotropy, the power of MaxH is even higher, while PC does worse than single phenotype case. The ordering of the power of MaxH in the three scenarios can be predicted from the order of the MaxH's heritability. The loss of power due to estimating $r_g$ is negligible for case a) and c), and about $5\%$ for case b). This is likely due to the fact that $r_g$ and $r_p$ can be estimated well enough to choose the correct linear combination. The estimates of all the heritabilities tend to be lower than predicted by less than $10\%$ (Table~\ref{table:em_power}). The order is preserved. As we might expect, the power loss for PC is negligible when estimating the variance components, as it does not rely on the decomposition of $\Vbf_p$ into genetic and residual components.  For other values of $h^2$ and $T$, the plots such as Figures~\ref{fig:power_corr} and \ref{fig:power_m} can be used as guidance for choosing which phenotypes to combine once $r_g$ and $r_p$ are estimated. Further studies are needed to determine loss of power for larger $T$ and smaller $n$.
+
+\subsection{Empirical Power for Testing Small Effects}\label{sec:results_emp}
+The $100$ previously chosen SNPs from Chromosome $1$ are used here as causal SNPs with each SNP explaining $1\%$ of the total heritability. SNPs effects are generated from a bivariate normal distribution with mean zero and variance $\Vbf_g$. Simulations are performed for a range of $r_p$ and $r_g$. Five hundred pairs of the phenotypes are simulated and tested against each of the $100$ SNPs. We use the same strategy to estimate type I error rate by using all the SNPs from chromosome 2 and all the MaxH phenotypes. Our empirical type I error is well maintained at the significant level of $5\times 10^{-4}$ (i.e., $4.9\times 10^{-4}$). 
+
+We compare several methods based on the proportion of the $100$ causal SNPs that have power over $80\%$, shown as heat maps in Figure~\ref{fig:heatmap-maxh-pca} (univariate analysis) and Figure~S\ref{supp-fig:heatmap-multi} (multivariate analysis). Figure~\ref{fig:heatmap-maxh-pca} shows the results for MaxH and PCA. It also shows the association analysis using original single phenotypes adjusting for multiple testing. The MaxH approach generally performs the best among univariate association analysis. When $r_g=r_p$, MaxH perform poorly which is consistent with the pattern of heritability maximization (Figure \ref{fig:power_corr}). With certain configurations of genetic and phenotypic correlations, the MaxH method can do as well as using multivariate phenotypes (Figure~S\ref{supp-fig:heatmap-multi}). Note that one could also perform a multivariate analysis using multiple phenotypes generated from our method, but it is equivalent to using original multiple phenotypes or generated from PCA method (see Discussion).   We consider situation when $r_g=0.7$ and $r_p=0.8$ to examine the relation between effect sizes and power (Figure~\ref{fig:effect_sizes}).  In Figure \ref{fig:effect_sizes}, we plot the effect sizes of the $100$ causal SNPs. The power for such SNPs is shown in gray scale. The pattern of black dots show that using a single phenotype ($\Ybf_1$ or $\Ybf_2$) for testing, power is the best for the loci which have the biggest effect sizes ($|b_1|$ or $|b_2|$) for the corresponding phenotypes. Using PC approach, only the loci whose effects are large on both phenotypes have good power, i.e., intersection of the black points in the bottom two plots.  However, using the MaxH phenotype, the set of loci having good power is when the effect sizes follows the global genetic distribution. Especially when both $|b_1|$ and $|b_2|$ are small and have opposite sign, MaxH is the only method that reveal them with very high power. However MaxH performs poorly along the diagonal stripe, i.e., when $b_1=b_2$, no matter the magnitude of $|b_1|$ or $|b_2|$.  Using our MaxH method, $40\%$ of the $100$ loci have power over $80\%$. Only about $20\%$ of the SNPs have power over $80\%$ when using PC and single phenotypes. 
+
+Although the fixed effects $b_1$ and $b_2$ are obtained from $\mathcal{N}(0,c\Vbf_g)$ where $c=0.01$, they cover a broad region from $-0.15$ to $0.15$. Our assumption about pleiotropy is that the effects of the polygenic components are drawn from a multivariate normal distribution with mean zero and variance covariance matrix $\Vbf_g$.  This does not imply equal pleiotropy for all SNPs unless $\Vbf_g$ has rank one.  This is illustrated in Figure~\ref{fig:effect_sizes} where we plot the genetic effects for a set if 100 SNPs drawn from the polygenic distribution with mean zero, variances $0.4$ and correlation of $0.7$.  As this figure illustrates, the extent of pleiotropy differs considerably among the $100$ SNPs, even though $r_g$ is relatively high.  It is natural to ask what would the power be for major SNP effects which are not drawn from this distribution, i.e., effects in the upper left and lower right corner.  Intuitively we would expect that the genetic effects on the diagonal corners would be easier to detect since they are further from the origin, and this is indeed the case.  Supplementary Figure S\ref{supp-fig:effect_sizes_all} illustrates this point by drawing SNPs from a uniform distribution on the plane.  The superiority of MaxH over PCA is clear (Figure S\ref{supp-fig:effect_sizes_all}).
+
+\subsection{GWAS Analysis in COPDGene NWH Population}\label{sec:example_copdgene}
+We apply our method to COPDGene, a large case-control sample of well-characterized smokers from a genome-wide association study of respiratory disease. It includes 10,192 non-hispanic white (NHW) and African American (AA) current and former smokers with airflow obstruction ranging from none to GOLD stage 4 (very severe) COPD.  The study design of COPDGene has been reported previously~\citep{Regan:2010uq}.  Briefly the subjects are included between the ages of $45$ and $80$ with at least a $10$ pack-year smoking history. Exclusion criteria includes pregnancy, history of other lung disease except asthma, prior lobectomy or lung volume reduction surgery, active cancer undergoing treatment, or known or suspected lung cancer.  We restrict our analysis to the NHW population, which includes $6678$ individuals after data cleaning and exclusions. Details concerning genotyping, quality control, and imputation are posted on the COPDGene website (http$://$www.copdgene.org).  
+
+We exclude SNPs that have MAF$<0.01$ and Hardy-Weinberg Equilibrium (HWE) p-value$<10^{-8}$ using PLINK~\citep{Purcell:2007kx}. Only those SNPs on the autosomes are used for heritability estimation by the software package Genome-wide Complex Trait Analysis (GCTA)~\citep{Yang:2011fk} (Table \ref{table: fev_fevfvc_emph}). Spirometry measures of lung function are performed before and after the inhalation of 180mcg (2 puffs) of albuterol. Pulmonary function measurements are collected according to the American Thoracic Society guidelines~\citep{Miller:2005bh}. Percent predicted values for FEV$_1$ are calculated using equations of Hankinson and colleagues~\citep{Hankinson:1999qf}.   FEV$_1$ and FEV$_1$/FVC, both measurements of lung function, are used to diagnose and gauge severity of disease. Volumetric chest CT acquisitions are obtained at full inspiration (200 mAs), and at the end of normal expiration (50 mAs). Quantitative image analysis to calculate percent emphysema is performed using 3D SLICER (http://www.slicer.org/). Percent emphysema, i.e., lung destructions that can lead to decreased lung function,  is estimated from using the percent below -950HU on chest CT scans.
+
+We consider one representative example of combining three major endophenotypes of COPD: FEV$_1$ (post bronchodilator), FEV$_1$/FVC and percent of Emphysema (Table \ref{table: fev_fevfvc_emph}). From Table \ref{table: fev_fevfvc_emph} we can see that this is not a scenario where we expect MaxH to do very well; $h_l^2$ is barely bigger than $h^2$ for FEV$_1$, and the $|r_p-r_g|$ are all small. Results using only FEV$_1$ and FEV$_1$/FVC are qualitatively similar (not shown).   Linear regression analyses of  each individual phenotype and the combined phenotypes were adjusted for age, gender, height, pack-years, and the first five genetic ancestry variables estimated by the software EIGENSTRAT~\citep{Price2006}. The standardized residuals for FEV$_1$, FEV$_1$/FVC, and log-transformed emphysema are used for analysis. Univariate genome-wide association analyses are performed using PLINK~\citep{Purcell:2007kx} and multivariate analyses are performed using  the Mendel software \citep{Lange:2013fk}. Very few SNPs reached genome-wide significant level of $5\times 10^{-8}$. For illustration, SNPs passing the threshold $5\times 10^{-7}$ and the corresponding gene information are shown in Table \ref{table:copd_maxh_assoc}. Detailed Manhattan plots are shown in the Supplementary Figure~S\ref{supp-fig:pca_maxh}.   All results are adjusted for genomic control factor (in addition to first five genetic ancestry variables estimated using principal components). 
+
+Table~\ref{table:copd_maxh_assoc} reports the significant results from PC and MaxH as well as multivariate regression, and Multiphen~\citep{OReilly:2012aa}.  Full genome-wide association results for the individual phenotypes are presented in separate publications (Lutz et al and Cho et al, in preparation).  SNPs in three loci, \textit{\small{FAM13A}} (Chr 4) \citep{Cho:2010fk}, \textit{\small{HHIP}} (Chr 4) \citep{Pillai:2009uq}, and \textit{\small{CHRNA3/CHRNA5/AGPHD1}} (Chr 15) \citep{Pillai:2009uq,Hardin:2012ly,Lambrechts:2010vn} have been previously reported, and well-replicated, as associated with COPD disease status. SNPs at all of these loci are associated with MaxH, but PC, multivariate regression, and Multiphen test failed to detect the \textit{\small{FAM13A}} region.  Multiphen also fail to detect \textit{\small{HHIP}}. All four methods confirmed the loci on Chr $15$. Three other loci, \textit{\small{TGFB2}} (Chr 1) \citep{Soler-Artigas:2011uq}, \textit{\small{AGER}} (Chr6) \citep{Hancock:2010kx,Repapi:2010vn}, and \textit{\small{MMP12}} (Chr 11) \citep{Korytina:2008zr,Hunninghake:2009ys} have previously shown weaker association results in COPD GWAS. PC and MaxH found the SNP at \textit{\small{MMP12}} significant, but the multivariate regression and Multiphen do not. All methods in Table~\ref{table:copd_maxh_assoc} except MaxH find \textit{\small{AGER}} significant. Only the multivariate method find \textit{\small{TGFB2}}. The final locus \textit{\small{PTPRM}}, found only by the multivariate method, has not previously been reported and is of uncertain validity. Although MaxH does not find the most loci ($4$ versus $6$ for multivariate regression), it is the only approach to find all of the confirmed loci. Further we judge its performance better than PC because PC failed to find \textit{\small{FAM13A}}.
+
+\section{Discussion}\label{section:discussion}
+
+In order to discover novel genetic disease variants, multiple correlated phenotypes are frequently used in genetic association studies with the goal of improving power. One strategy uses a linear combination of the traits. The first PC derived trait is the linear combination of individual traits that accounts for the maximum phenotypic variance. In this paper, we propose an alternate dimension reduction scheme, i.e., a linear combination of the phenotypes that maximizes the heritability (MaxH) of any linear combination of the traits. In contrast to the first PC, the maximized heritability of this linear combination translates into improved power for association testing, because the coefficients are chosen to maximize the genetic variance while minimizing the residual variance. We compare several univariate and multivariate methods using both simulated and real data. We also show that a multivariate approach using all $T$ phenotypes has better power than either univariate approach, first PC or MaxH, but depending on the parameters using a smaller subset of traits may do almost as well.   \cite{Aschard:2014aa} extends the single PC approach by including multiple PCÕs of the phenotypic matrix in a multivariate regression, and shows that using all $T$ PCÕs is equivalent to multivariate regression using the original $T$ traits.  It is easy to see that using all the MaxH PCs in a multivariate analysis is essentially equivalent to the multivariate analysis using the original traits because both of the PC approaches are full rank linear transformations of the $\Ybf$ (assuming $\Vbf_g$ and $\Vbf_p$ are both of full rank), and a multivariate analysis is invariant to linear transformations. However multivariate regression is usually computationally intensive and the power gain compared to other approaches depends upon unknown effects and assumptions~\citep{Korte:2012kx,Schifano:2013aa}. In fact in a simulation study of \cite{Suo2013}, multivariate analysis of analysis of variance (MANOVA) performs the worst compared to PCA and single phenotype approach.
+
+We approximate power analytically as a simple function of the maximized heritability, given the model parameters.  The improvement in maximizing heritability relative to individual trait heritability depends on the configuration of the phenotypic and genotypic correlation coefficients $r_p$ and $r_g$ respectively, between pairs of phenotypes. Given a data set of multiple phenotypes and SNPs from a GWAS platform, one can straightforwardly estimate the necessary parameters, $\Vbf_g$ and $\Vbf_p$, in order to calculate maximized heritability for any subset of the $T$ phenotypes. When $r_p$ and $r_g$ are fixed and estimated for the full set of $T$ phenotypes, by definition the maximized heritability always occurs when using the full set of $T$ phenotypes.    
+
+Our theory assumes that the SNP effects being tested are consistent with the polygenic model.  This assumption makes power calculations easy, but of course, it may not be correct.  However, when $\Vbf_g$ and $\Vbf_p$ are estimated we assume no major gene effects, only zero mean polygenic effects.  If there are major gene effects for any trait, they should make a major contribution to the estimated $\Vbf_g$, thus enhancing the power of MaxH.  This point is illustrated in Figure~S\ref{supp-fig:effect_sizes_all}  which depicts testing polygenic effects which are not selected from the assumed polygenic distribution. Figure~S\ref{supp-fig:effect_sizes_all} shows that MaxH has good power when testing SNPs effects with very different pleiotropy. This is because the causal SNPs are assumed to have zero means and the the sparse areas in Figure S\ref{supp-fig:effect_sizes_all} tend to be further from the origin than the many of the causal SNPs. The relationships between $r_p$ and $r_g$ and the individual phenotypic heritabilities can be used to infer which combined phenotypes will give larger maximized heritabilities.  Our data example illustrates that even if the maximized heritability is only slightly higher than individual trait heritability, MaxH can still do well at picking up established loci.  MaxH is the best way to identify SNPs associated with at least one phenotype. If a significant SNP is identified using MaxH,  one should use other methods, e.g. \cite{Stephens:2013aa}, to look for direct or indirect effects and to determine which phenotypes are directly associated.  
+
+Our method requires the estimation of the parameters once, then the combined phenotype can be used as a single trait in the standard GWAS analysis. The computational cost is relatively the same as the standard GWAS analysis. In practice, combining too many phenotypes may hurt the heritability and power, as the variance matrices that have to be estimated become too large. Large sample sizes are needed in order to accurately estimate $\Vbf_g$ and to find the correct linear combination. In real data analysis, population substructure and environmental factors can inflate the estimation of $\Vbf_g$~\citep{Browning2011}. For COPDGene data example, we employ strict QC that were suggested by \cite{Yang:2011fk} to minimize the potential inflation. Detailed discussions can be found in paper \cite{Zhou:2013aa}. Specifically, the proportion of estimated heritability attributed to population substructure across the whole genome is less than $1\%$.   In controlling the effects of population substructure for association testing, we use both PCs calculated by EIGENSTRAT~\citep{Price2006} and genomic inflation factor~\citep{Yang:2011fl} to adjust phenotypes and test statistics.  EIGENSTRAT generates PCs using only the information from genetic relationship matrix.  For MaxH, we use both phenotypic and genetic relationship matrix to generate PCs and estimate MaxH phenotype. There might be more potential for bias.  However, the PC's from EIGENSTRAT are PCs of genetic relationship matrix, which are different from the PC's of the heritability matrix. They therefore are still valid to be used in MaxH setting for population substructure adjustment. 
+
+ 
+
+
+\clearpage
+\section*{Acknowledgments*}
+
+\begin{center}
+Appendix 1: NIH Grant Support and Disclaimer
+\end{center}
+
+The project described was supported by Award Number U01HL089897 and Award Number U01HL089856 from the National Heart, Lung, And Blood Institute. The content is solely the responsibility of the authors and does not necessarily represent the official views of the National Heart, Lung, And Blood Institute or the National Institutes of Health.
+
+\begin{center}
+Appendix 2: COPD Foundation Funding
+\end{center}
+
+The COPDGene¨ project is also supported by the COPD Foundation through contributions made to an Industry Advisory Board comprised of AstraZeneca, Boehringer Ingelheim, Novartis, Pfizer, Siemens and Sunovion. 
+
+\vspace{3cm}
+
+\noindent $^*$ Full list of COPD Investigators unit core and clinical centers are included in the supplementary material
+
+\clearpage
+\bibliographystyle{PLoS-Biology}
+\bibliography{/Users/jzhou/Documents/Research/LatexBib/prop}
+%\bibliography{prop}
+
+\clearpage
+\section*{Legends}
+\noindent Figure 1: Maximized heritability as a function of genotypic and phenotypic correlation.
+
+\noindent Figure 2: Maximized heritability as a function of the number of phenotypes. Left two plots show the cases when $r_g>r_p=0.4$; right two plots show the cases when $r_g<r_p=0.8$. Upper two plots show the situation when the combine phenotypes have the same heritability ($h^2=0.4$ and $k=1$) while fixing $r_p$ and varying $r_g$. The lower two show the situation when heritabilities of combined phenotypes drop as a factor of $k$ ($h^2=0.4$ and $k<1$) while fixing both $r_g$ and $r_p$.
+
+\noindent Figure 3: Proportion of 100 SNPs with empirical power greater than 0.8 as a function of $r_g$ and $r_p$ using phenotype of first PC from  MaxH and PCA method. *Association analysis was performed using both single phenotypes and used Bonferroni correction to adjusted for extra tests, i.e., $2.5\times 10^{-4}$.
+
+\noindent Figure 4: $100$ SNPs' empirical power as a function of effects sizes of both traits, when $r_p=0.8$ and $r_g=0.7$. Gray scale represents the scale of power, the darker the higher power.
+
+\newpage
+\begin{figure}[!ht]
+\centering
+$$
+\begin{array}{c}
+\mbox{$h^2=0.4,\,k=1$} \\
+\includegraphics[width=5in]{Figure_1.eps} 
+\end{array}
+$$
+\caption{Maximized heritability as a function of genotypic and phenotypic correlation.}
+\label{fig:power_corr}
+\end{figure}
+
+\clearpage
+\begin{figure}[!ht]
+\centering
+$$
+\begin{array}{cc}
+(a): r_p=0.4,\,k=1   & (b): r_p=0.8,\,k=1\\
+\includegraphics[width=3.2in]{Figure_2.eps} & \includegraphics[width=3.2in]{Figure_3.eps} \\
+(c): r_p=0.4,\,r_g=0.9   & (d): r_p=0.8,\,r_g=0.7 \\
+\includegraphics[width=3.2in]{Figure_4.eps} & \includegraphics[width=3.2in]{Figure_5.eps} \\
+\end{array}
+$$
+\caption{Maximized heritability as a function of the number of phenotypes. Left two plots show the cases when $r_g>r_p=0.4$; right two plots show the cases when $r_g<r_p=0.8$. Upper two plots show the situation when the combine phenotypes have the same heritability ($h^2=0.4$ and $k=1$) while fixing $r_p$ and varying $r_g$. The lower two show the situation when heritabilities of combined phenotypes drop as a factor of $k$ ($h^2=0.4$ and $k<1$) while fixing both $r_g$ and $r_p$.}
+\label{fig:power_m}
+\end{figure}
+
+
+
+\clearpage
+
+
+\begin{figure}[!ht]
+%\centering
+$$
+\begin{array}{c}
+\mbox{MaxH}  \\
+\includegraphics[angle=-90,origin=c,width=3in]{Figure_6.eps} \\
+\mbox{PCA}\\
+ \includegraphics[angle=-90,origin=c,width=3in]{Figure_7.eps} \\
+\mbox{Single Phenotype*}\\
+ \includegraphics[angle=-90,origin=c,width=3in]{Figure_8.eps} 
+\end{array}
+$$
+\caption{Proportion of 100 SNPs with empirical power greater than 0.8 as a function of $r_g$ and $r_p$ using phenotype of first PC from  MaxH and PCA method. *Association analysis was performed using both single phenotypes and used Bonferroni correction to adjusted for extra tests, i.e., $2.5\times 10^{-4}$.}\label{fig:heatmap-maxh-pca}
+\end{figure}
+
+
+
+\clearpage
+\begin{figure}[!ht]
+\centering
+$$
+\begin{array}{cc}
+\mbox{MaxH}  & \mbox{PCA}\\
+\includegraphics[angle=-90,origin=c,width=3in]{Figure_9.eps}&
+\includegraphics[angle=-90,origin=c,width=3in]{Figure_10.eps} \\
+\mbox{Phenotype one}  & \mbox{Phenotype two}\\
+\includegraphics[angle=-90,origin=c,width=3in]{Figure_11.eps} & \includegraphics[angle=-90,origin=c,width=3in]{Figure_12.eps} \\
+\end{array}
+$$
+\caption{$100$ SNPs' empirical power as a function of effects sizes of both traits, when $r_p=0.8$ and $r_g=0.7$. Gray scale represents the scale of power, the darker the higher power.}
+\label{fig:effect_sizes}
+\end{figure}
+
+
+\clearpage
+\begin{table}
+\caption{Empirical power for a single major locus in the presence of polygenic variance are shown when using MaxH, PC phenotypes, and two single phenotypes (upper panel). Estimated and predicated MaxH phenotype's heritabilities are shown in the lower panel. Both empirical power and estimated heritabilities are assessed when $r_g$ and $r_p$ are known and when  $r_g$ and $r_p$ are unknown.}
+\vspace{1cm}
+\label{table:em_power}
+\centering 
+\begin{tabular}{lcccccc}
+\toprule
+% \hline 
+ &\multicolumn{2}{c}{a} & \multicolumn{2}{c}{b}& \multicolumn{2}{c}{c}\\
+                           \cline{2-7}
+                            &\multicolumn{2}{c}{$r_g=0.9,\,\,r_p=0.4$} & \multicolumn{2}{c}{$r_g=0.7,\,\,r_p=0.8$}& \multicolumn{2}{c}{$r_g=0.1,\,\,r_p=0.5$}\\
+                            \hline
+ &\multicolumn{6}{c}{Power}\\\hline
+\multirow{2}{*}{$r_p$ and $r_g$ Known}  &MaxH          & 0.716 & 	MaxH & 0.780& 	MaxH & 0.796  \\
+                                                                  &PCA            &0.716  &    PCA    & 0.692&    PCA    & 0.652 \\\hline
+\multirow{2}{*}{$r_p$ and $r_g$ Estimated}    &MaxH          & 0.706 &    MaxH &0.748&    MaxH &0.792\\
+                                                                  &PCA           &0.706 &     PCA   &0.704&     PCA   & 0.644\\\hline
+\multirow{2}{*}{ Single Trait}  &  Trait 1& $0.630$          &   Trait 1& $0.664$ &  Trait 1& $0.664$\\   
+                      &  Trait 2 & $0.638$            &       Trait 2& $0.672$ &    Trait 2&$0.668$  \\
+\midrule\midrule
+ &\multicolumn{6}{c}{MaxH Heritablity}\\\hline
+\multirow{1}{*}{Predicted}  & \multicolumn{2}{c}{0.54} & 	 \multicolumn{2}{c}{0.60}& 	 \multicolumn{2}{c}{0.72} \\\hline
+\multirow{1}{*}{$r_p$ and $r_g$ Known}  & \multicolumn{2}{c}{0.506(0.049)} & 	 \multicolumn{2}{c}{0.566(0.113)}& 	 \multicolumn{2}{c}{0.682(0.035)} \\\hline
+\multirow{1}{*}{$r_p$ and $r_g$ Estimated}    & \multicolumn{2}{c}{0.509(0.049) }&     \multicolumn{2}{c}{0.573(0.110)}&     \multicolumn{2}{c}{0.676(0.035)}\\
+\bottomrule                                                                                            
+\end{tabular}
+\end{table}
+
+\clearpage
+
+\begin{table}
+\caption{Heritability estimates are listed on the diagonal. Phenotypic $r_p$ (upper diagonal) and genotypic $r_g$ (lower diagonal) correlations are listed on the off-diagonal. 
+(MaxH = $-0.892$FEV$_1$-$0.349$FEV$_1$/FVC+0.283$\log$(pctEmph); PCA=$-0.583$FEV$_1$-$0.631$FEV$_1$/FVC +$0.511$$\log$(pctEmph))
+}
+\vspace{1mm}
+\centering 
+\begin{tabular}{|l|rrrrr|}
+\hline
+ 	&	\mbox{\tt{ FEV$_1$}}	&	\mbox{\tt{ FEV$_1$/FVC}} &\mbox{\tt{$\log$(pctEmph)}} & 	\mbox{\tt{MaxH}} & 	\mbox{\tt{PCA}}\\
+\hline
+\hline
+\mbox{\tt{FEV$_1$}}	&	0.383	&	0.837 &-0.440&  -	&-\\
+\mbox{\tt{FEV$_1$/FVC}}	&	0.882	&	0.372 &-0.637& -&-\\
+\mbox{\tt{$\log$(pctEmph)}} &-0.623 & -0.814&0.283&-&-\\
+\mbox{\tt{MaxH}} & - & - &&0.395&-\\
+\mbox{\tt{PCA}} & - & - &&-&0.390\\
+\hline
+\end{tabular}
+\label{table: fev_fevfvc_emph}
+\end{table}
+
+\clearpage
+
+
+\begin{table}
+\caption{The number of SNPs in COPDGene sample passing genome-wide significant level  $5\times 10^{-7}$ by different methods and the minimum and maximum $-log_{10}(\mbox{p-value})$ when using FEV$_1$, FEV$_1$/FVC, and $\log$(pctEmph).}
+\label{table:copd_maxh_assoc}
+\begin{center}
+\begin{tabular}{|l|lc|cc|cc|cc|cc|}
+\hline
+\multirow{2}{*}{\mbox{Chr}}&\multicolumn{2}{c|}{\multirow{2}{*}{\mbox{Nearest Gene}}}&\multicolumn{2}{c|}{\mbox{MaxH}}&\multicolumn{2}{c|}{\mbox{PCA}}&\multicolumn{2}{c|}{\mbox{Multivariate}}&\multicolumn{2}{c|}{\mbox{MultiPhen}}\\
+\cline{4-11}
+					&						& &\mbox{Min}& \mbox{Max}&\mbox{Min}& \mbox{Max}&\mbox{Min}& \mbox{Max}&\mbox{Min}& \mbox{Max}\\
+\hline\hline
+\multirow{2}{*}{1}&\multirow{2}{*}{\textit{\small{*TGFB2}}}	& \tiny{\mbox{Num}} 	 &	&	 &		&	&\multicolumn{2}{c|}{2}	& & 	\\
+\cline{4-11}
+                    	 &								& \tiny{$-\log_{10}(\mbox{P})$}	 &	&	 &		&	&6.5&6.7	& & 	\\ \hline
+\multirow{2}{*}{4}&\multirow{2}{*}{\textit{\small{$^\#$FAM13A}}}	&\tiny{\mbox{Num}} 	&	\multicolumn{2}{c|}{2}	&	& 	&	 &	& &		\\
+\cline{4-11}
+			&									& \tiny{$-\log_{10}(\mbox{P})$} &	6.3&6.4&	&  	&	 &	& &		\\\hline
+\multirow{2}{*}{4}&\multirow{2}{*}{\textit{\small{$^\#$HHIP}}}	& \tiny{\mbox{Num}} 	&\multicolumn{2}{c|}{6}	&	\multicolumn{2}{c|}{7}	&	\multicolumn{2}{c|}{5}	& &	\\
+\cline{4-11}
+			&									& \tiny{$-\log_{10}(\mbox{P})$} &	6.4&7.8	&6.4&	8.3	&	7.9&8.3	&	&	\\\hline
+\multirow{2}{*}{6}&\multirow{2}{*}{\textit{\small{*AGER}}}	& \tiny{\mbox{Num}} 		 & 	&	&\multicolumn{2}{c|}{1}	&	\multicolumn{2}{c|}{1}	&	\multicolumn{2}{c|}{1}	\\
+\cline{4-11}
+			&								& \tiny{$-\log_{10}(\mbox{P})$}	 & 	&&	7.6&7.6	&	6.8&6.8	&	6.8&6.8	\\\hline
+\multirow{2}{*}{11}&\multirow{2}{*}{\textit{\small{*MMP12}}}	& \tiny{\mbox{Num}} 		&\multicolumn{2}{c|}{1}	&	\multicolumn{2}{c|}{1}	&	&	& &	 	\\
+\cline{4-11}
+				&								& \tiny{$-\log_{10}(\mbox{P})$}	&6.4&6.4	&	6.3&6.3	&	&	& &	 	\\\hline
+\multirow{2}{*}{15}&\multirow{2}{*}{\textit{\tiny{\pbox{20cm}{$^\#$CHRNA3-5\\AGPHD1\\IREB2}}}}&\tiny{\mbox{Num}} 	&\multicolumn{2}{c|}{13}	&	\multicolumn{2}{c|}{15}	&	\multicolumn{2}{c|}{13}	&	\multicolumn{2}{c|}{9}	\\
+\cline{4-11}
+				&												& \tiny{$-\log_{10}(\mbox{P})$}&6.3&10.9	&	6.5&9.0	&	6.5&11.3	&6.3&	8.3	\\\hline
+\multirow{2}{*}{18}&\multirow{2}{*}{\textit{\small{PTPRM}}} 	& \tiny{\mbox{Num}} 	& 	&	& 	&	&\multicolumn{2}{c|}{1}	&	&	\\
+\cline{4-11}
+			&									& \tiny{$-\log_{10}(\mbox{P})$}&	& 	&	& 	&	6.6&6.6	&	&	\\\hline
+\hline
+\end{tabular}
+\end{center}
+$^\#$ confirmed in prior COPD GWAS\\
+* supportive evidence from other studies\\
+See text.
+\end{table}
+
+
+
+\end{document}
+
