@@ -46,10 +46,16 @@
 #
 # call GCTA to estimate genetic variances
 #
+gctafolder=/rsgrps/jzhou/bin/gcta_1.02/
 phenotypefile=CG10kNHWRes4Subtyping.txt
 grmfile=copd_nhw_filt
-qcovfile=qcovarNHW.txt
-covfile=covarNHW.txt
+
+# create symbolic link to ../datasets/ folder
+ln /rsgrps/jzhou/COPDGene/Phase1_Phenotype/$phenotypefile ../datasets/$phenotypefile
+ln /rsgrps/jzhou/COPDGene/GRM/${grmfile}.grm.gz ../datasets/${grmfile}.grm.gz
+ln /rsgrps/jzhou/COPDGene/GRM/${grmfile}.grm.id ../datasets/${grmfile}.grm.id
+#qcovfile=qcovarNHW.txt
+#covfile=covarNHW.txt
 
 names=$(head -n 1 ../datasets/$phenotypefile)
 namesarray=($names)
@@ -58,16 +64,65 @@ phenotypes=$((len-2))
 
 for i in $(seq $phenotypes)
 do
-pi1=$((i+2))
+pi1=$((i+1))
 outpi1=${namesarray[$pi1]}
 #/Users/jzhou/Documents/Bin/gcta_1.02/gcta_mac --reml  --grm ../datasets/$grmfile --pheno ../datasets/$phenotypefile --mpheno $i --qcovar ../datasets/$qcovfile --covar ../datasets/$covfile --out $j
-#/Users/jzhou/Documents/Bin/gcta_1.02/gcta_mac --reml  --grm ../datasets/$grmfile --pheno ../datasets/$phenotypefile --mpheno $i --out $outpi1
+
+cat > job$i.tmp  << EOF
+#!/bin/csh
+
+#PBS -N job${i}
+###PBS -m bea
+#PBS -W group_list=jzhou
+#PBS -q standard
+#PBS -l jobtype=serial
+#PBS -l select=1:ncpus=6:mem=11gb
+#PBS -l pvmem=23gb
+#PBS -l place=pack:shared
+#PBS -l walltime=10:00:00
+#PBS -l cput=10:00:00
+
+### set directory for job execution, ~netid = home directory path
+cd /rsgrps/jzhou/MaxH/MaxH/codebase
+
+### run your executable program with begin and end date and time output
+date
+${gctafolder}gcta64 --reml  --grm ../datasets/$grmfile --pheno ../datasets/$phenotypefile --mpheno $i --out $outpi1
+date
+
+EOF
+qsub job$i.tmp
+
 ii=$((i+1))
     for j in $(seq $ii $phenotypes)
     do
-    pi2=$((j+2))
+    pi2=$((j+1))
     outpi2=${namesarray[$pi2]}
-    /Users/jzhou/Documents/Bin/gcta_1.02/gcta_mac --reml-bivar $i $j --grm ../datasets/$grmfile --pheno ../datasets/$phenotypefile  --out $outpi1$outpi2
+
+cat > job$i"_"$j.tmp  << EOF
+#!/bin/csh
+
+#PBS -N job$i"_"$j
+###PBS -m bea
+#PBS -W group_list=jzhou
+#PBS -q standard
+#PBS -l jobtype=serial
+#PBS -l select=1:ncpus=6:mem=11gb
+#PBS -l pvmem=23gb
+#PBS -l place=pack:shared
+#PBS -l walltime=10:00:00
+#PBS -l cput=10:00:00
+
+### set directory for job execution, ~netid = home directory path
+cd /rsgrps/jzhou/MaxH/MaxH/codebase
+
+### run your executable program with begin and end date and time output
+date
+${gctafolder}gcta64 --reml-bivar $i $j --grm ../datasets/$grmfile --pheno ../datasets/$phenotypefile  --out $outpi1$outpi2
+date
+
+EOF
+	qsub job$i"_"$j.tmp
     done
 done
 
