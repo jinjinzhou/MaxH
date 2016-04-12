@@ -62,7 +62,7 @@ pi1=$((i+1))
 outpi1=${namesarray[$pi1]}
 #/Users/jzhou/Documents/Bin/gcta_1.02/gcta_mac --reml  --grm ../datasets/$grmfile --pheno ../datasets/$phenotypefile --mpheno $i --qcovar ../datasets/$qcovfile --covar ../datasets/$covfile --out $j
 
-vi
+
 
 ii=$((i+1))
     for j in $(seq $ii $phenotypes)
