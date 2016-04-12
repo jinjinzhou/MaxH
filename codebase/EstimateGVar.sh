@@ -7,28 +7,22 @@
 #
 #  This script is used to estimate genetic variances of phenotypes
 #  and genetic co-variances between pairs of phenotypes.
-#
-#  "logpctEmph_UpperLobes",
-#   "logpctEmph_LowerLobes",
-#   "logpctEmph_UL_LL_ratio",
-#   "logpctEmph_Slicer",
-#   "logSlicer_15pctIn_Total",
-#   "logpctGasTrap_Slicer",
-#   "logpctEmph_UpperThird_Slicer",
-#   "logpctEmph_LowerThird_Slicer",
-#   "logPi10_SRWA",
-#   "WallAreaPct_seg",
-#   "TLCpp_race_adjusted",
-#   "logFRCpp_race_adjusted",
-#   "FEV1pp_utah",
-#   "FVCpp_utah",
-#   "FEV1_FVC_utah",
-#   "BDR_pct_FEV1",
-#   "BDR_pct_FVC"
+#  "fev_std_res"
+#  "FVCpp_std_res"
+#  "TLCpp_std_res"
+#  "fev_fvc_std_res"
+#  "logpctEmph_std_res"
+#  "logpctEmph_UT_std_res"
+#  "logpctEmph_LT_std_res"
+#  "logpctGasTrap_std_res"
+#  "logUT_LT_std_res"
+#  "logPi10_SRWA_std_res"
+#   "WallAreaPct_seg_std_res"
 #
 #  Phenotype file: ../datasets/CG10kNHWPheno4Subtyping.txt
-#  Standardized residual file: ../datasets/CG10kNHWRes4Subtyping.txt which adjusted for gender+age+agesquare+age*gender+agesquare*gender+pc1+pc2+pc3 
-#  GRM file: ../datasets/copd_nhw_filt, note this GRM was calcuated and filted based on Jin Zhou's AJCRM heritability paper.
+#  Standardized residual file: ../datasets/CG10kNHWRes4Subtyping.txt which adjusted for gender+age+height+packyears+pc1+pc2+pc3
+#  Standardized residual file with complete information: ../datasets/CG10kNHWRes4SubtypingNoMissing.txt
+#  GRM file: ../datasets/CG10kNhwHg19Clean_v2_Mar2013, note this GRM was recalculated using all genotypes information from COPDGene.
 #  Quantitative covariates file: ../datasets/qcovarNHW.txt
 #  Categorical covariates file: ../datasets/covarNHW.txt
 #
@@ -48,12 +42,12 @@
 #
 gctafolder=/rsgrps/jzhou/bin/gcta_1.02/
 phenotypefile=CG10kNHWRes4Subtyping.txt
-grmfile=copd_nhw_filt
+grmfile=CG10kNhwHg19Clean_v2_Mar2013
 
 # create symbolic link to ../datasets/ folder
-ln /rsgrps/jzhou/COPDGene/Phase1_Phenotype/$phenotypefile ../datasets/$phenotypefile
-ln /rsgrps/jzhou/COPDGene/GRM/${grmfile}.grm.gz ../datasets/${grmfile}.grm.gz
-ln /rsgrps/jzhou/COPDGene/GRM/${grmfile}.grm.id ../datasets/${grmfile}.grm.id
+# ln /rsgrps/jzhou/COPDGene/Phase1_Phenotype/$phenotypefile ../datasets/$phenotypefile
+# ln /rsgrps/jzhou/COPDGene/GRM/${grmfile}.grm.gz ../datasets/${grmfile}.grm.gz
+# ln /rsgrps/jzhou/COPDGene/GRM/${grmfile}.grm.id ../datasets/${grmfile}.grm.id
 #qcovfile=qcovarNHW.txt
 #covfile=covarNHW.txt
 
@@ -68,30 +62,7 @@ pi1=$((i+1))
 outpi1=${namesarray[$pi1]}
 #/Users/jzhou/Documents/Bin/gcta_1.02/gcta_mac --reml  --grm ../datasets/$grmfile --pheno ../datasets/$phenotypefile --mpheno $i --qcovar ../datasets/$qcovfile --covar ../datasets/$covfile --out $j
 
-cat > job$i.tmp  << EOF
-#!/bin/csh
-
-#PBS -N job${i}
-###PBS -m bea
-#PBS -W group_list=jzhou
-#PBS -q standard
-#PBS -l jobtype=serial
-#PBS -l select=1:ncpus=6:mem=11gb
-#PBS -l pvmem=23gb
-#PBS -l place=pack:shared
-#PBS -l walltime=10:00:00
-#PBS -l cput=10:00:00
-
-### set directory for job execution, ~netid = home directory path
-cd /rsgrps/jzhou/MaxH/MaxH/codebase
-
-### run your executable program with begin and end date and time output
-date
-${gctafolder}gcta64 --reml  --grm ../datasets/$grmfile --pheno ../datasets/$phenotypefile --mpheno $i --out $outpi1
-date
-
-EOF
-qsub job$i.tmp
+vi
 
 ii=$((i+1))
     for j in $(seq $ii $phenotypes)
