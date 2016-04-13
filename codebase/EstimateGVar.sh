@@ -58,17 +58,41 @@ phenotypes=$((len-2))
 
 for i in $(seq $phenotypes)
 do
-pi1=$((i+1))
-outpi1=${namesarray[$pi1]}
-#/Users/jzhou/Documents/Bin/gcta_1.02/gcta_mac --reml  --grm ../datasets/$grmfile --pheno ../datasets/$phenotypefile --mpheno $i --qcovar ../datasets/$qcovfile --covar ../datasets/$covfile --out $j
+    pi1=$((i+1))
+    outpi1=${namesarray[$pi1]}
 
-vi
+cat > job$i.tmp  << EOF
+#!/bin/csh
+
+#PBS -N job$i
+###PBS -m bea
+#PBS -W group_list=jzhou
+#PBS -q standard
+#PBS -l jobtype=serial
+#PBS -l select=1:ncpus=6:mem=11gb
+#PBS -l pvmem=23gb
+#PBS -l place=pack:shared
+#PBS -l walltime=10:00:00
+#PBS -l cput=10:00:00
+
+### set directory for job execution, ~netid = home directory path
+cd /rsgrps/jzhou/MaxH/MaxH/codebase
+
+### run your executable program with begin and end date and time output
+date
+/Users/jzhou/Documents/Bin/gcta_1.02/gcta_mac --reml  --grm ../datasets/$grmfile --pheno ../datasets/$phenotypefile --mpheno $i --qcovar ../datasets/$qcovfile --covar ../datasets/$covfile --out $j
+date
+
+EOF
+qsub job$i.tmp
 
 ii=$((i+1))
     for j in $(seq $ii $phenotypes)
     do
     pi2=$((j+1))
     outpi2=${namesarray[$pi2]}
+
+
 
 cat > job$i"_"$j.tmp  << EOF
 #!/bin/csh
