@@ -60,7 +60,7 @@ for i in $(seq $phenotypes)
 do
 pi1=$((i+1))
 outpi1=${namesarray[$pi1]}
-#/Users/jzhou/Documents/Bin/gcta_1.02/gcta_mac --reml  --grm ../datasets/$grmfile --pheno ../datasets/$phenotypefile --mpheno $i --qcovar ../datasets/$qcovfile --covar ../datasets/$covfile --out $j
+${gctafolder}gcta64 --reml  --grm ../datasets/$grmfile --pheno ../datasets/$phenotypefile --mpheno $i --qcovar ../datasets/$qcovfile --covar ../datasets/$covfile --out $j
 
 
 
