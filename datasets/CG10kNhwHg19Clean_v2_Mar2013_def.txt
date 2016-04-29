@@ -1,0 +1,13 @@
+fev,variable
+FVCpp,variable
+TLCpp,variable
+fev_fvc,variable
+logpctEmph,variable
+logpctEmph_UT,variable
+logpctEmph_LT,variable
+logUT_LT,variable
+logpctGasTrap,variable
+logPi10_SRWA,variable
+WallAreaPctS,variable
+BDR_pct_FEV1,variable
+BDR_pct_FVC,variable
