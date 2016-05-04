@@ -1,0 +1,91 @@
+fev_std_res V(G) 0.259424 0.055258 V(G)/Vp 0.260251 0.054856 n 6651
+fev_std_resFVCpp_std_res C(G)_tr12 0.173709 0.049123 
+fev_std_resTLCpp_std_res C(G)_tr12 -0.014640 0.040204 
+fev_std_resfev_fvc_std_res C(G)_tr12 0.222744 0.050602 
+fev_std_reslogpctEmph_std_res C(G)_tr12 -0.155431 0.043118 
+fev_std_reslogpctEmph_UT_std_res C(G)_tr12 -0.141217 0.043051 
+fev_std_reslogpctEmph_LT_std_res C(G)_tr12 -0.147069 0.042618 
+fev_std_reslogUT_LT_std_res C(G)_tr12 -0.043870 0.040641 
+fev_std_reslogpctGasTrap_std_res  
+fev_std_reslogPi10_SRWA_std_res C(G)_tr12 -0.096385 0.042469 
+fev_std_resWallAreaPctS_std_res  
+fev_std_resBDR_pct_FEV1_std_res C(G)_tr12 -0.145086 0.039407 
+fev_std_resBDR_pct_FVC_std_res C(G)_tr12 -0.103482 0.039752 
+FVCpp_std_res V(G) 0.186285 0.055189 V(G)/Vp 0.186369 0.054916 n 6651
+FVCpp_std_resTLCpp_std_res C(G)_tr12 0.151015 0.041001 
+FVCpp_std_resfev_fvc_std_res C(G)_tr12 0.074987 0.040632 
+FVCpp_std_reslogpctEmph_std_res C(G)_tr12 -0.017233 0.039829 
+FVCpp_std_reslogpctEmph_UT_std_res C(G)_tr12 -0.005715 0.040233 
+FVCpp_std_reslogpctEmph_LT_std_res C(G)_tr12 -0.025224 0.040034 
+FVCpp_std_reslogUT_LT_std_res C(G)_tr12 0.022443 0.040122 
+FVCpp_std_reslogpctGasTrap_std_res C(G)_tr12 -0.069333 0.042111 
+FVCpp_std_reslogPi10_SRWA_std_res  
+FVCpp_std_resWallAreaPctS_std_res  
+FVCpp_std_resBDR_pct_FEV1_std_res C(G)_tr12 -0.091401 0.038578 
+FVCpp_std_resBDR_pct_FVC_std_res C(G)_tr12 -0.066250 0.038785 
+TLCpp_std_res V(G) 0.309385 0.057769 V(G)/Vp 0.309800 0.057033 n 6309
+TLCpp_std_resfev_fvc_std_res  
+TLCpp_std_reslogpctEmph_std_res C(G)_tr12 0.188003 0.046354 
+TLCpp_std_reslogpctEmph_UT_std_res C(G)_tr12 0.182832 0.045994 
+TLCpp_std_reslogpctEmph_LT_std_res C(G)_tr12 0.195837 0.046461 
+TLCpp_std_reslogUT_LT_std_res C(G)_tr12 0.048933 0.041443 
+TLCpp_std_reslogpctGasTrap_std_res C(G)_tr12 0.144857 0.045887 
+TLCpp_std_reslogPi10_SRWA_std_res C(G)_tr12 -0.085112 0.041627 
+TLCpp_std_resWallAreaPctS_std_res C(G)_tr12 -0.024100 0.040860 
+TLCpp_std_resBDR_pct_FEV1_std_res C(G)_tr12 0.083549 0.039793 
+TLCpp_std_resBDR_pct_FVC_std_res C(G)_tr12 0.104250 0.039707 
+fev_fvc_std_res V(G) 0.265770 0.055089 V(G)/Vp 0.266838 0.054705 n 6651
+fev_fvc_std_reslogpctEmph_std_res  
+fev_fvc_std_reslogpctEmph_UT_std_res  
+fev_fvc_std_reslogpctEmph_LT_std_res  
+fev_fvc_std_reslogUT_LT_std_res C(G)_tr12 -0.102449 0.041434 
+fev_fvc_std_reslogpctGasTrap_std_res  
+fev_fvc_std_reslogPi10_SRWA_std_res C(G)_tr12 -0.020455 0.040412 
+fev_fvc_std_resWallAreaPctS_std_res C(G)_tr12 -0.079278 0.041682 
+fev_fvc_std_resBDR_pct_FEV1_std_res C(G)_tr12 -0.138762 0.039676 
+fev_fvc_std_resBDR_pct_FVC_std_res C(G)_tr12 -0.092673 0.040705 
+logpctEmph_std_res V(G) 0.282331 0.057502 V(G)/Vp 0.282969 0.056953 n 6282
+logpctEmph_std_reslogpctEmph_UT_std_res  
+logpctEmph_std_reslogpctEmph_LT_std_res C(G)_tr12 0.244354 0.055064 
+logpctEmph_std_reslogUT_LT_std_res C(G)_tr12 0.173553 0.044093 
+logpctEmph_std_reslogpctGasTrap_std_res C(G)_tr12 0.247841 0.052114 
+logpctEmph_std_reslogPi10_SRWA_std_res C(G)_tr12 -0.046221 0.040632 
+logpctEmph_std_resWallAreaPctS_std_res C(G)_tr12 0.013254 0.040410 
+logpctEmph_std_resBDR_pct_FEV1_std_res C(G)_tr12 0.059998 0.039775 
+logpctEmph_std_resBDR_pct_FVC_std_res C(G)_tr12 0.053938 0.039899 
+logpctEmph_UT_std_res V(G) 0.298919 0.058900 V(G)/Vp 0.299112 0.058179 n 6177
+logpctEmph_UT_std_reslogpctEmph_LT_std_res C(G)_tr12 0.233891 0.053027 
+logpctEmph_UT_std_reslogUT_LT_std_res C(G)_tr12 0.193297 0.048969 
+logpctEmph_UT_std_reslogpctGasTrap_std_res C(G)_tr12 0.244231 0.051987 
+logpctEmph_UT_std_reslogPi10_SRWA_std_res C(G)_tr12 -0.045254 0.041100 
+logpctEmph_UT_std_resWallAreaPctS_std_res C(G)_tr12 0.020120 0.040863 
+logpctEmph_UT_std_resBDR_pct_FEV1_std_res C(G)_tr12 0.057429 0.040156 
+logpctEmph_UT_std_resBDR_pct_FVC_std_res C(G)_tr12 0.044767 0.040290 
+logpctEmph_LT_std_res V(G) 0.232271 0.058098 V(G)/Vp 0.233062 0.057833 n 6177
+logpctEmph_LT_std_reslogUT_LT_std_res C(G)_tr12 0.088664 0.041130 
+logpctEmph_LT_std_reslogpctGasTrap_std_res C(G)_tr12 0.216778 0.050748 
+logpctEmph_LT_std_reslogPi10_SRWA_std_res C(G)_tr12 -0.059352 0.040734 
+logpctEmph_LT_std_resWallAreaPctS_std_res C(G)_tr12 0.003912 0.040526 
+logpctEmph_LT_std_resBDR_pct_FEV1_std_res C(G)_tr12 0.069545 0.039953 
+logpctEmph_LT_std_resBDR_pct_FVC_std_res C(G)_tr12 0.054090 0.040017 
+logUT_LT_std_res V(G) 0.208745 0.058424 V(G)/Vp 0.208742 0.058050 n 6177
+logUT_LT_std_reslogpctGasTrap_std_res C(G)_tr12 0.109808 0.044569 
+logUT_LT_std_reslogPi10_SRWA_std_res C(G)_tr12 0.005060 0.040701 
+logUT_LT_std_resWallAreaPctS_std_res C(G)_tr12 0.030825 0.040551 
+logUT_LT_std_resBDR_pct_FEV1_std_res C(G)_tr12 0.005662 0.039670 
+logUT_LT_std_resBDR_pct_FVC_std_res C(G)_tr12 0.003065 0.039842 
+logpctGasTrap_std_res V(G) 0.228224 0.063027 V(G)/Vp 0.228581 0.062668 n 5764
+logpctGasTrap_std_reslogPi10_SRWA_std_res C(G)_tr12 -0.024569 0.042427 
+logpctGasTrap_std_resWallAreaPctS_std_res C(G)_tr12 0.003899 0.042766 
+logpctGasTrap_std_resBDR_pct_FEV1_std_res C(G)_tr12 0.094331 0.042253 
+logpctGasTrap_std_resBDR_pct_FVC_std_res C(G)_tr12 0.075843 0.042081 
+logPi10_SRWA_std_res V(G) 0.077057 0.056427 V(G)/Vp 0.077018 0.056349 n 6248
+logPi10_SRWA_std_resWallAreaPctS_std_res C(G)_tr12 0.087903 0.045920 
+logPi10_SRWA_std_resBDR_pct_FEV1_std_res C(G)_tr12 0.076283 0.039575 
+logPi10_SRWA_std_resBDR_pct_FVC_std_res C(G)_tr12 -0.016367 0.039220 
+WallAreaPctS_std_res V(G) 0.162762 0.056428 V(G)/Vp 0.162759 0.056200 n 6307
+WallAreaPctS_std_resBDR_pct_FEV1_std_res C(G)_tr12 0.063473 0.039759 
+WallAreaPctS_std_resBDR_pct_FVC_std_res C(G)_tr12 -0.002007 0.039480 
+BDR_pct_FEV1_std_res V(G) 0.092914 0.053708 V(G)/Vp 0.093014 0.053693 n 6596
+BDR_pct_FEV1_std_resBDR_pct_FVC_std_res C(G)_tr12 0.075328 0.045777 
+BDR_pct_FVC_std_res V(G) 0.059713 0.054421 V(G)/Vp 0.059751 0.054427 n 6597
