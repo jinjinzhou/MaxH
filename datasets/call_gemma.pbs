@@ -1,0 +1,15 @@
+#!/bin/bash
+
+#source /usr/share/Modules/init/bash
+#PBS -N mendel
+#PBS -W group_list=jzhou
+#PBS -q standard
+#PBS -l jobtype=serial
+#PBS -l select=1:ncpus=12:mem=15gb:pcmem=8gb
+#PBS -l place=pack:shared
+#PBS -l walltime=10:00:00
+#PBS -l cput=10:00:00
+
+cd /gsfs1/rsgrps/jzhou/MaxH/MaxH/datasets
+
+/rsgrps/jzhou/bin/gemma.1 -bfile CG10kNhwHg19Clean_v2_Mar2013 -gk 2 -o CG10kNhwHg19Clean_v2_Mar2013
